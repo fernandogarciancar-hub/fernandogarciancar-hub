@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secciones con Estilos</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+    }
+
+    /* --- Estilos generales para cada sección --- */
+    section {
+        padding: 50px 15%;
+    }
+
+    section h2 {
+        margin-bottom: 15px;
+    }
+
+    section p {
+        max-width: 700px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    section img {
+        width: 300px;
+        border-radius: 10px;
+    }
+
+    /* --- Estilo propio de cada sección --- */
+
+    /* Inicio */
+    #inicio {
+        background: linear-gradient(135deg, #d7e8ff, #ffffff);
+    }
+    #inicio img {
+        border: 5px solid #5a8dee;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sobre mí */
+    #sobre-mi {
+        background: #fff9e6;
+    }
+    #sobre-mi img {
+        border: 3px dashed #e0a100;
+        padding: 8px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(150, 120, 50, 0.3);
+    }
+
+    /* Galería */
+    #galeria {
+        background: #f3e8ff;
+    }
+    #galeria img {
+        border: none;
+        box-shadow: 0 0 15px rgba(110, 0, 180, 0.4);
+    }
+</style>
+
+</head>
+<body>
+
+<!-- ================== INICIO ================== -->
+<section id="inicio">
+    <h2>Inicio</h2>
+    <p>
+        Bienvenido a esta página de ejemplo donde organizamos el contenido en secciones 
+        claras y visualmente diferentes. Cada bloque incluye un título, un párrafo y 
+        una imagen con un estilo propio.
+    </p>
+    <img src="https://picsum.photos/seed/inicio/500/300" alt="Imagen Inicio">
+</section>
+
+<!-- ================== SOBRE MÍ ================== -->
+<section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>
+        Soy un creador apasionado por el diseño y la tecnología. Me encanta estructurar 
+        información de forma visual y ordenada para hacerla más clara y atractiva.
+    </p>
+    <img src="https://picsum.photos/seed/sobremi/500/300" alt="Imagen Sobre Mí">
+</section>
+
+<!-- ================== GALERÍA ================== -->
+<section id="galeria">
+    <h2>Galería</h2>
+    <p>
+        Aquí encontrarás una selección visual que representa inspiración, creatividad 
+        y estilo. Cada imagen es una ventana a nuevas ideas.
+    </p>
+    <img src="https://picsum.photos/seed/galeria/500/300" alt="Imagen Galería">
+</section>
+
+</body>
+</html>
