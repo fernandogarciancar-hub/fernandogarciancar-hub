@@ -5,247 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Profesional</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Tipografías modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== ESTILOS GENERALES ===== */
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+        :root {
+            --primary: #0EA5E9;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --text: #334155;
+            --radius: 14px;
         }
 
+        * {
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
         header {
-            background: rgba(0, 0, 0, 0.6);
             position: fixed;
             width: 100%;
             top: 0;
-            padding: 15px 40px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 18px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-        }
-
-        header a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        header a:hover {
-            color: #00d4ff;
+            z-index: 999;
         }
 
         .logo {
-            font-size: 22px;
-            color: #fff;
+            color: white;
             font-weight: 800;
-            text-transform: uppercase;
+            font-size: 22px;
+            letter-spacing: 1px;
         }
 
-        /* ===== SECCIÓN HERO ===== */
+        nav a {
+            color: #cbd5e1;
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== HERO ===== */
         .hero {
             height: 100vh;
-            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+            background: linear-gradient(
+                rgba(10, 20, 50, 0.6),
+                rgba(10, 20, 50, 0.6)
+            ), 
+            url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=60") center/cover no-repeat;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            text-align: center;
+            justify-content: center;
+            padding-left: 10%;
             color: white;
-            padding: 0 20px;
         }
 
         .hero h1 {
             font-size: 60px;
-            margin-bottom: 10px;
+            font-weight: 800;
+            max-width: 700px;
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
+            font-size: 22px;
+            max-width: 600px;
+            margin: 20px 0;
+            opacity: 0.9;
         }
 
         .btn {
-            padding: 12px 25px;
-            background: #00d4ff;
-            color: #000;
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
             font-weight: 600;
             text-decoration: none;
-            border-radius: 8px;
-            transition: .3s;
+            transition: .25s;
+            margin-top: 12px;
         }
 
         .btn:hover {
-            background: #fff;
-            transform: scale(1.05);
+            background: white;
+            color: var(--dark);
+            transform: translateY(-3px);
         }
 
-        /* ===== SOBRE MÍ ===== */
-        #sobre-mi {
-            padding: 100px 40px;
+        /* ===== SOBRE MI ===== */
+        section {
+            padding: 100px 60px;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            color: var(--dark);
             text-align: center;
-            background: #fff;
+        }
+
+        #sobre-mi .content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
         }
 
         #sobre-mi img {
             width: 180px;
             border-radius: 50%;
             margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .skills {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 14px;
             flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .skill {
-            background: #00d4ff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            color: #000;
-        }
-
-        /* ===== PORTAFOLIO ===== */
-        #portafolio {
-            padding: 80px 40px;
-            background: #f0f7fa;
-            text-align: center;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            text-align: left;
-            transition: .3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 12px;
-            height: 160px;
-            object-fit: cover;
-        }
-
-        .card h3 {
-            margin: 15px 0 5px;
-        }
-
-        .card p {
-            font-size: 15px;
-        }
-
-        .card .btn {
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        /* ===== CONTACTO ===== */
-        #contacto {
-            padding: 80px 40px;
-            background: #fff;
-            text-align: center;
-        }
-
-        form {
-            max-width: 500px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input, textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #aaa;
-            font-size: 16px;
-        }
-
-        textarea {
-            height: 120px;
-        }
-
-        footer {
-            background: #111;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        .social-icons a {
-            color: #00d4ff;
-            margin: 0 10px;
-            font-size: 20px;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ===== NAVBAR ===== -->
-    <header>
-        <div class="logo">Mi Portfolio</div>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#portafolio">Portafolio</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
-
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="inicio">
-        <h1>Tu Nombre Aquí</h1>
-        <p>Desarrollador Web | Diseñador | Creador Digital</p>
-        <a href="#portafolio" class="btn">Ver Portafolio</a>
-    </section>
-
-    <!-- ===== SOBRE MÍ ===== -->
-    <section id="sobre-mi">
-        <h2>Sobre Mí</h2>
-        <img src="https://i.pravatar.cc/300" alt="Foto personal">
-
-        <p>Soy un desarrollador apasionado por crear experiencias digitales modernas, funcionales y atractivas.</p>
-
-        <div class="skills">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">Diseño UI/UX</span>
-        </div>
-    </section>
-
-    <!-- ===== PORTAFOLIO ===== -->
-    <section id="portafolio">
-        <h2>Mis Proyectos</h2>
-
-        <div class="grid">
-
-            <!-- Proyecto 1 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=800&q
-
