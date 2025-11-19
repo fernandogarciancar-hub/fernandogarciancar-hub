@@ -3,191 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio – Fernando García Nieto</title>
+    <title>Fernando García Nieto – Portfolio Profesional</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
+        /* ============================================================
+           VARIABLES DE COLOR
+        ============================================================ */
         :root {
             --primary: #00d4ff;
             --dark: #0f172a;
-            --gray: #444;
             --light: #f8fafc;
+            --gray: #444;
             --radius: 14px;
+
+            /* MODO OSCURO */
+            --bg: var(--light);
+            --text: var(--gray);
+            --card: #ffffff;
+            --nav: rgba(15, 23, 42, 0.7);
         }
 
+        /* CAMBIO A MODO OSCURO */
+        body.dark {
+            --bg: #0d1117;
+            --text: #e2e8f0;
+            --card: #111827;
+            --nav: rgba(0, 0, 0, 0.7);
+        }
+
+        /* ============================================================
+           ESTILOS GENERALES
+        ============================================================ */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
-            color: var(--gray);
+            background: var(--bg);
+            color: var(--text);
             scroll-behavior: smooth;
+            transition: .3s ease;
         }
 
-        /* ===== HEADER ===== */
+        img { pointer-events: none; }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
         header {
-            background: rgba(15, 23, 42, 0.65);
+            background: var(--nav);
             backdrop-filter: blur(8px);
             position: fixed;
-            width: 100%;
             top: 0;
-            padding: 15px 50px;
+            width: 100%;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            z-index: 999;
         }
 
+        /* LOGO SVG */
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             color: #fff;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        header a {
-            color: #e2e8f0;
-            margin: 0 18px;
+        /* NAV */
+        nav a {
+            color: #fff;
             text-decoration: none;
-            font-weight: 500;
+            margin: 0 15px;
+            font-weight: 600;
             transition: .3s;
         }
+        nav a:hover { color: var(--primary); }
 
-        header a:hover {
+        /* BOTÓN MODO OSCURO */
+        #darkToggle {
+            cursor: pointer;
+            font-size: 22px;
+            margin-left: 10px;
             color: var(--primary);
         }
 
-        /* ===== HERO ===== */
+        /* MENÚ MÓVIL */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 27px;
+            height: 3px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 880px) {
+            nav {
+                position: absolute;
+                top: 70px;
+                right: -100%;
+                background: var(--nav);
+                width: 200px;
+                flex-direction: column;
+                padding: 20px;
+                transition: .3s;
+                border-radius: 0 0 0 15px;
+            }
+            nav a { margin: 10px 0; }
+            nav.active { right: 0; }
+            .hamburger { display: flex; }
+        }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
         .hero {
             height: 100vh;
             background: linear-gradient(
-                rgba(0, 8, 20, 0.65),
-                rgba(0, 8, 20, 0.65)
-            ),
-            url('https://images.unsplash.com/photo-1517142089942-ba376ce32a0a?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+                rgba(0, 0, 0, 0.60),
+                rgba(0, 0, 0, 0.60)
+            ), 
+            url('https://images.unsplash.com/photo-1517142089942-ba376ce32a0a?auto=format&fit=crop&w=1400&q=80') center/cover;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            justify-content: center;
             text-align: center;
             color: white;
-            padding: 0 20px;
+            padding: 0 25px;
+            animation: heroFade 1.5s ease-out;
+        }
+
+        @keyframes heroFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
-            font-size: 58px;
-            font-weight: 800;
-            max-width: 900px;
-            margin-bottom: 15px;
+            font-size: 60px;
+            margin-bottom: 10px;
         }
-
         .hero p {
-            font-size: 22px;
+            font-size: 20px;
             opacity: .9;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .btn {
-            padding: 14px 30px;
+            padding: 12px 25px;
             background: var(--primary);
-            color: #000;
-            font-weight: 600;
-            text-decoration: none;
             border-radius: var(--radius);
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
             transition: .3s;
-            display: inline-block;
         }
 
         .btn:hover {
             background: #fff;
-            color: var(--dark);
-            transform: translateY(-4px);
+            transform: scale(1.05);
         }
 
-        /* ===== SOBRE MÍ ===== */
+        /* ============================================================
+           SECCIONES
+        ============================================================ */
+        section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Fade-in */
+        .fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: .7s ease;
+        }
+        .fade.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           SOBRE MÍ
+        ============================================================ */
         #sobre-mi {
-            padding: 110px 40px;
             text-align: center;
-            background: white;
-        }
-
-        #sobre-mi h2 {
-            font-size: 34px;
-            margin-bottom: 10px;
-            color: var(--dark);
         }
 
         #sobre-mi img {
             width: 190px;
             border-radius: 50%;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.12);
-        }
-
-        #sobre-mi p {
-            max-width: 700px;
-            margin: auto;
-            font-size: 17px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .skills {
             display: flex;
             justify-content: center;
-            gap: 18px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-top: 25px;
         }
 
         .skill {
             background: var(--primary);
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: var(--radius);
             font-weight: 600;
             color: #000;
-            font-size: 15px;
             transition: .3s;
         }
 
         .skill:hover {
+            transform: scale(1.08);
             background: #fff;
-            border: 1px solid var(--primary);
-            transform: scale(1.05);
         }
 
-        /* ===== PORTAFOLIO ===== */
+        /* ============================================================
+           PORTAFOLIO
+        ============================================================ */
         #portafolio {
-            padding: 100px 40px;
             background: #e8f4ff;
-            text-align: center;
-        }
-
-        #portafolio h2 {
-            font-size: 34px;
-            color: var(--dark);
+            border-radius: 25px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 35px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
         .card {
-            background: #fff;
+            background: var(--card);
             border-radius: var(--radius);
             overflow: hidden;
-            text-align: left;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transition: .3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
         }
 
         .card img {
@@ -196,189 +262,193 @@
             object-fit: cover;
         }
 
-        .card h3 {
-            margin: 15px 20px 5px;
-            color: var(--dark);
-            font-size: 20px;
-        }
+        .card h3 { margin: 15px 20px 5px; }
+        .card p { margin: 0 20px 10px; }
 
-        .card p {
-            margin: 0 20px;
-            font-size: 15px;
-            min-height: 55px;
-        }
-
-        .card .btn {
-            margin: 15px 20px;
-        }
-
-        /* ===== CONTACTO ===== */
-        #contacto {
-            padding: 100px 40px;
-            background: white;
-            text-align: center;
-        }
-
-        #contacto h2 {
-            font-size: 34px;
-            color: var(--dark);
-        }
-
+        /* ============================================================
+           CONTACTO
+        ============================================================ */
         form {
-            max-width: 600px;
+            max-width: 500px;
             margin: auto;
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-top: 30px;
+            gap: 15px;
         }
 
         input, textarea {
-            padding: 14px;
+            padding: 12px;
             border-radius: var(--radius);
-            border: 1px solid #bbb;
-            font-size: 16px;
-            transition: .3s;
+            border: 1px solid #aaa;
+            background: var(--card);
+            color: var(--text);
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
-        }
-
-        textarea {
-            height: 140px;
-        }
-
-        .social-icons a {
-            color: var(--primary);
-            margin: 0 12px;
-            font-size: 24px;
-            text-decoration: none;
-            transition: .3s;
-        }
-
-        .social-icons a:hover {
-            color: var(--dark);
-            transform: scale(1.1);
-        }
-
+        /* ============================================================
+           FOOTER
+        ============================================================ */
         footer {
-            background: var(--dark);
-            color: #fff;
             text-align: center;
-            padding: 22px;
-            margin-top: 60px;
-            font-size: 15px;
+            padding: 20px;
+            background: var(--dark);
+            color: white;
+            margin-top: 50px;
         }
     </style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <div class="logo">Fernando G. Nieto</div>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#portafolio">Portafolio</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header>
+    <div class="logo">
+        <!-- LOGO FGN SVG -->
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+            <rect x="5" y="5" width="90" height="90" rx="15" fill="#00d4ff"/>
+            <text x="50%" y="58%" text-anchor="middle" font-size="42" font-weight="800" fill="#000">FGN</text>
+        </svg>
+        Fernando
+    </div>
 
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-        <h1>Fernando García Nieto</h1>
-        <p>Alumno de 4º de la ESO en Maristas Cartagena | Aficionado a los coches, motos, videojuegos y deporte</p>
-        <a href="#portafolio" class="btn">Ver Mis Proyectos</a>
-    </section>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
 
-    <!-- SOBRE MI -->
-    <section id="sobre-mi">
-        <h2>Sobre Mí</h2>
-        <img src="https://i.pravatar.cc/150?img=12" alt="Foto personal">
+    <div id="darkToggle">🌙</div>
 
-        <p>
-            ¡Hola! Soy <strong>Fernando García Nieto</strong>, tengo 15 años y estudio en 
-            <strong>Maristas Cartagena</strong>, en 4º de la ESO.  
-            Me encanta todo lo relacionado con los <strong>coches</strong>, <strong>motos</strong>, los 
-            <strong>videojuegos</strong> y practicar <strong>deporte</strong>, sobre todo 
-            <strong>baloncesto</strong> y <strong>gym</strong>.  
-            También me interesa aprender sobre diseño, tecnología y crear cosas nuevas.
-        </p>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
 
-        <div class="skills">
-            <span class="skill">Creatividad</span>
-            <span class="skill">Trabajo en equipo</span>
-            <span class="skill">Tecnología</span>
-            <span class="skill">Diseño básico</span>
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="inicio">
+    <h1 class="fade">Fernando García Nieto</h1>
+    <p class="fade">Alumno de 4º ESO | Maristas Cartagena | Coches · Motos · Gaming · Deporte</p>
+    <a href="#portafolio" class="btn fade">Ver Portafolio</a>
+</section>
+
+<!-- ============================================================
+     SOBRE MI
+============================================================ -->
+<section id="sobre-mi" class="fade">
+    <h2>Sobre Mí</h2>
+    <img src="https://i.pravatar.cc/300?img=12" alt="Foto">
+
+    <p>
+        Soy <strong>Fernando García Nieto</strong>, tengo 15 años y estudio 4º de la ESO
+        en <strong>Maristas Cartagena</strong>.  
+        Me apasionan los <strong>coches</strong>, las <strong>motos</strong>, 
+        los <strong>videojuegos</strong> y el <strong>deporte</strong>
+        (basket y gym especialmente).
+    </p>
+
+    <div class="skills">
+        <span class="skill">Creatividad</span>
+        <span class="skill">Tecnología</span>
+        <span class="skill">Diseño</span>
+        <span class="skill">Trabajo en equipo</span>
+    </div>
+</section>
+
+<!-- ============================================================
+     PORTAFOLIO
+============================================================ -->
+<section id="portafolio" class="fade">
+    <h2>Mis Proyectos</h2>
+
+    <div class="grid">
+
+        <!-- COCHES -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1606813907291-4663b77ae4d7?auto=format&fit=crop&w=900&q=80">
+            <h3>Proyecto Coches</h3>
+            <p>Corvette C7 negro: diseño, motor y análisis personal.</p>
+            <a class="btn" href="#">Ver más</a>
         </div>
-    </section>
 
-    <!-- PORTAFOLIO -->
-    <section id="portafolio">
-        <h2>Mis Proyectos</h2>
-
-        <div class="grid">
-
-            <!-- PROYECTO COCHES – CORVETTE C7 NEGRO -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1606813907291-4663b77ae4d7?auto=format&fit=crop&w=900&q=60" alt="Corvette C7 negro">
-                <h3>Proyecto de Coches</h3>
-                <p>Análisis del Corvette C7 negro metálico: diseño, motor y prestaciones.</p>
-                <a href="#" class="btn">Ver más</a>
-            </div>
-
-            <!-- PROYECTO GAMING – MANDO PLAYSTATION -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1611026208820-43f4486a41c9?auto=format&fit=crop&w=900&q=60" alt="Mando PlayStation">
-                <h3>Proyecto Gaming</h3>
-                <p>Videojuegos favoritos, rankings personales y experiencias gaming.</p>
-                <a href="#" class="btn">Ver más</a>
-            </div>
-
-            <!-- PROYECTO MOTO – BMW S1000RR 2018 GRIS -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1618081013324-3cae0c3bd6c3?auto=format&fit=crop&w=900&q=60" alt="BMW S1000RR gris">
-                <h3>Proyecto Moto</h3>
-                <p>BMW S1000RR 2018 tuneada gris: potencia, estética y detalles técnicos.</p>
-                <a href="#" class="btn">Ver más</a>
-            </div>
-
-            <!-- PROYECTO GYM -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1583454110556-21f3dd86629e?auto=format&fit=crop&w=900&q=60" alt="Gym">
-                <h3>Proyecto Gym & Fitness</h3>
-                <p>Rutinas, ejercicios favoritos y evolución personal en el entrenamiento.</p>
-                <a href="#" class="btn">Ver más</a>
-            </div>
-
+        <!-- GAMING -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1611026208820-43f4486a41c9?auto=format&fit=crop&w=900&q=80">
+            <h3>Proyecto Gaming</h3>
+            <p>Mando PS y mis videojuegos favoritos.</p>
+            <a class="btn" href="#">Ver más</a>
         </div>
-    </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto">
-        <h2>Contacto</h2>
-
-        <form>
-            <input type="text" placeholder="Tu nombre" required>
-            <input type="email" placeholder="Tu correo" required>
-            <textarea placeholder="Escribe tu mensaje aquí..."></textarea>
-            <button class="btn" type="submit">Enviar</button>
-        </form>
-
-        <div class="social-icons" style="margin-top: 20px;">
-            <a href="#">🌐</a>
-            <a href="#">🎮</a>
-            <a href="#">🏍️</a>
-            <a href="#">💪</a>
+        <!-- MOTO -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1618081013324-3cae0c3bd6c3?auto=format&fit=crop&w=900&q=80">
+            <h3>Proyecto Moto</h3>
+            <p>BMW S1000RR 2018 gris: estética y datos técnicos.</p>
+            <a class="btn" href="#">Ver más</a>
         </div>
-    </section>
 
-    <footer>
-        © 2025 Fernando García Nieto — Todos los derechos reservados.
-    </footer>
+        <!-- GYM -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1583454110556-21f3dd86629e?auto=format&fit=crop&w=900&q=80">
+            <h3>Proyecto Gym</h3>
+            <p>Rutinas, progreso y motivación diaria.</p>
+            <a class="btn" href="#">Ver más</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     CONTACTO
+============================================================ -->
+<section id="contacto" class="fade">
+    <h2>Contacto</h2>
+
+    <form>
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="Tu correo" required>
+        <textarea placeholder="Mensaje..."></textarea>
+        <button class="btn">Enviar</button>
+    </form>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+    © 2025 Fernando García Nieto — Todos los derechos reservados.
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+    /* Fade-In Scroll */
+    const fades = document.querySelectorAll('.fade');
+    function showOnScroll() {
+        fades.forEach(el => {
+            const rect = el.getBoundingClientRect().top;
+            if (rect < window.innerHeight - 80) el.classList.add('show');
+        });
+    }
+    window.addEventListener('scroll', showOnScroll);
+    showOnScroll();
+
+    /* Modo Oscuro */
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    /* Menú móvil */
+    function toggleMenu() {
+        document.querySelector('nav').classList.toggle('active');
+    }
+</script>
 
 </body>
 </html>
