@@ -3,54 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Profesional</title>
+    <title>Portfolio – Fernando García Nieto</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== ESTILOS GENERALES ===== */
+        :root {
+            --primary: #00d4ff;
+            --dark: #0f172a;
+            --gray: #444;
+            --light: #f8fafc;
+            --radius: 14px;
+        }
+
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light);
+            color: var(--gray);
+            scroll-behavior: smooth;
         }
 
+        /* ===== HEADER ===== */
         header {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(8px);
             position: fixed;
             width: 100%;
             top: 0;
-            padding: 15px 40px;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-        }
-
-        header a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        header a:hover {
-            color: #00d4ff;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 24px;
             color: #fff;
-            font-weight: 800;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* ===== SECCIÓN HERO ===== */
+        header a {
+            color: #e2e8f0;
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        header a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== HERO ===== */
         .hero {
             height: 100vh;
-            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+            background: linear-gradient(
+                rgba(0, 8, 20, 0.65),
+                rgba(0, 8, 20, 0.65)
+            ),
+            url('https://images.unsplash.com/photo-1517142089942-ba376ce32a0a?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -61,154 +78,207 @@
         }
 
         .hero h1 {
-            font-size: 60px;
-            margin-bottom: 10px;
+            font-size: 58px;
+            font-weight: 800;
+            max-width: 900px;
+            margin-bottom: 15px;
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
+            font-size: 22px;
+            opacity: .9;
+            margin-bottom: 35px;
         }
 
         .btn {
-            padding: 12px 25px;
-            background: #00d4ff;
+            padding: 14px 30px;
+            background: var(--primary);
             color: #000;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--radius);
             transition: .3s;
+            display: inline-block;
         }
 
         .btn:hover {
             background: #fff;
-            transform: scale(1.05);
+            color: var(--dark);
+            transform: translateY(-4px);
         }
 
         /* ===== SOBRE MÍ ===== */
         #sobre-mi {
-            padding: 100px 40px;
+            padding: 110px 40px;
             text-align: center;
-            background: #fff;
+            background: white;
+        }
+
+        #sobre-mi h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
 
         #sobre-mi img {
-            width: 180px;
+            width: 190px;
             border-radius: 50%;
             margin-bottom: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+        }
+
+        #sobre-mi p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 17px;
         }
 
         .skills {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .skill {
-            background: #00d4ff;
-            padding: 10px 20px;
-            border-radius: 20px;
+            background: var(--primary);
+            padding: 10px 22px;
+            border-radius: var(--radius);
             font-weight: 600;
             color: #000;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        .skill:hover {
+            background: #fff;
+            border: 1px solid var(--primary);
+            transform: scale(1.05);
         }
 
         /* ===== PORTAFOLIO ===== */
         #portafolio {
-            padding: 80px 40px;
-            background: #f0f7fa;
+            padding: 100px 40px;
+            background: #e8f4ff;
             text-align: center;
+        }
+
+        #portafolio h2 {
+            font-size: 34px;
+            color: var(--dark);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
             margin-top: 40px;
         }
 
         .card {
             background: #fff;
-            padding: 15px;
-            border-radius: 12px;
+            border-radius: var(--radius);
             overflow: hidden;
             text-align: left;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
             transition: .3s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.18);
         }
 
         .card img {
             width: 100%;
-            border-radius: 12px;
-            height: 160px;
+            height: 170px;
             object-fit: cover;
         }
 
         .card h3 {
-            margin: 15px 0 5px;
+            margin: 15px 20px 5px;
+            color: var(--dark);
+            font-size: 20px;
         }
 
         .card p {
+            margin: 0 20px;
             font-size: 15px;
+            min-height: 55px;
         }
 
         .card .btn {
-            margin-top: 10px;
-            display: inline-block;
+            margin: 15px 20px;
         }
 
         /* ===== CONTACTO ===== */
         #contacto {
-            padding: 80px 40px;
-            background: #fff;
+            padding: 100px 40px;
+            background: white;
             text-align: center;
+        }
+
+        #contacto h2 {
+            font-size: 34px;
+            color: var(--dark);
         }
 
         form {
-            max-width: 500px;
+            max-width: 600px;
             margin: auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
+            margin-top: 30px;
         }
 
         input, textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #aaa;
+            padding: 14px;
+            border-radius: var(--radius);
+            border: 1px solid #bbb;
             font-size: 16px;
+            transition: .3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
         }
 
         textarea {
-            height: 120px;
-        }
-
-        footer {
-            background: #111;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            height: 140px;
         }
 
         .social-icons a {
-            color: #00d4ff;
-            margin: 0 10px;
-            font-size: 20px;
+            color: var(--primary);
+            margin: 0 12px;
+            font-size: 24px;
             text-decoration: none;
+            transition: .3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 22px;
+            margin-top: 60px;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
+    <!-- NAVBAR -->
     <header>
-        <div class="logo">Mi Portfolio</div>
+        <div class="logo">Fernando G. Nieto</div>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#sobre-mi">Sobre mí</a>
@@ -217,91 +287,93 @@
         </nav>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section class="hero" id="inicio">
-        <h1>Tu Nombre Aquí</h1>
-        <p>Desarrollador Web | Diseñador | Creador Digital</p>
-        <a href="#portafolio" class="btn">Ver Portafolio</a>
+        <h1>Fernando García Nieto</h1>
+        <p>Alumno de 4º de la ESO en Maristas Cartagena | Aficionado a los coches, motos, videojuegos y deporte</p>
+        <a href="#portafolio" class="btn">Ver Mis Proyectos</a>
     </section>
 
-    <!-- ===== SOBRE MÍ ===== -->
+    <!-- SOBRE MI -->
     <section id="sobre-mi">
         <h2>Sobre Mí</h2>
-        <img src="https://i.pravatar.cc/300" alt="Foto personal">
+        <img src="https://i.pravatar.cc/150?img=12" alt="Foto personal">
 
-        <p>Soy un desarrollador apasionado por crear experiencias digitales modernas, funcionales y atractivas.</p>
+        <p>
+            ¡Hola! Soy <strong>Fernando García Nieto</strong>, tengo 15 años y estudio en 
+            <strong>Maristas Cartagena</strong>, en 4º de la ESO.  
+            Me encanta todo lo relacionado con los <strong>coches</strong>, <strong>motos</strong>, los 
+            <strong>videojuegos</strong> y practicar <strong>deporte</strong>, sobre todo 
+            <strong>baloncesto</strong> y <strong>gym</strong>.  
+            También me interesa aprender sobre diseño, tecnología y crear cosas nuevas.
+        </p>
 
         <div class="skills">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">Diseño UI/UX</span>
+            <span class="skill">Creatividad</span>
+            <span class="skill">Trabajo en equipo</span>
+            <span class="skill">Tecnología</span>
+            <span class="skill">Diseño básico</span>
         </div>
     </section>
 
-    <!-- ===== PORTAFOLIO ===== -->
+    <!-- PORTAFOLIO -->
     <section id="portafolio">
         <h2>Mis Proyectos</h2>
 
         <div class="grid">
 
-            <!-- Proyecto 1 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=800&q=60" alt="Proyecto 1">
-                <h3>Proyecto 1</h3>
-                <p>Sitio web moderno creado con HTML, CSS y JavaScript.</p>
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=60">
+                <h3>Proyecto sobre Coches</h3>
+                <p>Página dedicada a mis modelos favoritos, fichas técnicas y marcas.</p>
                 <a href="#" class="btn">Ver más</a>
             </div>
 
-            <!-- Proyecto 2 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1504799563369-04e0aeca1a7e?auto=format&fit=crop&w=800&q=60" alt="Proyecto 2">
-                <h3>Proyecto 2</h3>
-                <p>Aplicación web enfocada en productividad con un diseño limpio.</p>
+                <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=800&q=60">
+                <h3>Proyecto Gaming</h3>
+                <p>Mi top de videojuegos favoritos, opinión personal y rankings.</p>
                 <a href="#" class="btn">Ver más</a>
             </div>
 
-            <!-- Proyecto 3 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=800&q=60" alt="Proyecto 3">
-                <h3>Proyecto 3</h3>
-                <p>Dashboard interactivo con gráficos y estadísticas en tiempo real.</p>
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=60">
+                <h3>Proyecto Basket</h3>
+                <p>Jugadores que admiro, jugadas, equipos y estadísticas.</p>
                 <a href="#" class="btn">Ver más</a>
             </div>
 
-            <!-- Proyecto 4 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=800&q=60" alt="Proyecto 4">
-                <h3>Proyecto 4</h3>
-                <p>Landing page profesional optimizada para conversiones.</p>
+                <img src="https://images.unsplash.com/photo-1583454110556-21f3dd86629e?auto=format&fit=crop&w=800&q=60">
+                <h3>Proyecto Gym & Fitness</h3>
+                <p>Rutinas, ejercicios que me gustan y progresos personales.</p>
                 <a href="#" class="btn">Ver más</a>
             </div>
 
         </div>
     </section>
 
-    <!-- ===== CONTACTO ===== -->
+    <!-- CONTACTO -->
     <section id="contacto">
         <h2>Contacto</h2>
 
         <form>
-            <input type="text" placeholder="Nombre" required>
-            <input type="email" placeholder="Correo" required>
-            <textarea placeholder="Mensaje"></textarea>
+            <input type="text" placeholder="Tu nombre" required>
+            <input type="email" placeholder="Tu correo" required>
+            <textarea placeholder="Escribe tu mensaje aquí..."></textarea>
             <button class="btn" type="submit">Enviar</button>
         </form>
 
         <div class="social-icons" style="margin-top: 20px;">
             <a href="#">🌐</a>
-            <a href="#">🐦</a>
-            <a href="#">📸</a>
-            <a href="#">💼</a>
+            <a href="#">🎮</a>
+            <a href="#">🏀</a>
+            <a href="#">💪</a>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
-        © 2025 Tu Nombre. Todos los derechos reservados.
+        © 2025 Fernando García Nieto — Todos los derechos reservados.
     </footer>
 
 </body>
